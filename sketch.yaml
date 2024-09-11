@@ -1,2 +1,8 @@
-default_port: /dev/ttyUSB0
-default_fqbn: arduino:avr:nano
+default_profile: nano
+profiles:
+  nano:
+    fqbn: arduino:avr:nano
+    platforms:
+      - platform: arduino:avr (1.8.6)
+    libraries:
+      - IBusBM (1.1.4)
