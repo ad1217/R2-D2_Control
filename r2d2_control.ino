@@ -49,7 +49,12 @@ void Motor::init() const {
 
 void Motor::drive(float speed) const {
   float scaled_speed = speed * 255.0;
-  if (scaled_speed < 0) {
+
+  // motor dead zone, won't spin anyway
+  if (abs(scaled_speed) < 25) {
+    analogWrite(forwardPin, 0);
+    analogWrite(reversePin, 0);
+  } else if (scaled_speed < 0) {
     analogWrite(forwardPin, 0);
     analogWrite(reversePin, -scaled_speed);
   } else {
