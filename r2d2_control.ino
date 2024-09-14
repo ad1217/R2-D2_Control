@@ -9,10 +9,10 @@ IBusBM ibus;
 const CurvatureDrive curvatureDrive = {
     .leftMotor = {.forwardPin = 3, .reversePin = 9},
     .rightMotor = {.forwardPin = 10, .reversePin = 11},
-    .frontBackChannel = 1 - 1,
-    .leftRightChannel = 2 - 1,
-    .throttleChannel = 8 - 1,
-    .turnInPlaceChannel = 10 - 1,
+    .frontBackChannel = 2 - 1,
+    .leftRightChannel = 1 - 1,
+    .throttleChannel = 10 - 1,
+    .turnInPlaceChannel = 8 - 1,
 };
 
 // dome using pins 5 and 6 as they have slightly different performance, as per
