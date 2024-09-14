@@ -24,22 +24,22 @@ const int domeChannel = 4 - 1;
 float readChannelSignedScaled(int channel) {
   int value = ibus.readChannel(channel);
 
-  // if values are outside of range, go to 0
-  if (value < 1000 || value > 2000) {
+  // if values are far outside of range, go to 0
+  if (value < 900 || value > 2100) {
     return 0.0;
   }
-  return float(value - 1500) / 1000 * 2;
+  return float(constrain(value, 1000, 2000) - 1500) / 1000 * 2;
 }
 
 // returns a float in range 0:1
 float readChannelUnsignedScaled(int channel) {
   int value = ibus.readChannel(channel);
 
-  // if values are outside of range, go to 0
-  if (value < 1000 || value > 2000) {
+  // if values are far outside of range, go to 0
+  if (value < 900 || value > 2100) {
     return 0.0;
   }
-  return float(value - 1000) / 1000;
+  return float(constrain(value, 1000, 2000) - 1000) / 1000;
 }
 
 void Motor::init() const {
