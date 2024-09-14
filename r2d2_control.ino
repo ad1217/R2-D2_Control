@@ -71,6 +71,16 @@ void CurvatureDrive::drive() const {
   float leftRightValue = readChannelSignedScaled(leftRightChannel) * throttle;
   boolean turnInPlace = ibus.readChannel(turnInPlaceChannel) > 1500;
 
+  Serial.print("Differential drive");
+  Serial.print(" throttle: ");
+  Serial.print(throttle);
+  Serial.print("\tFB: ");
+  Serial.print(frontBackValue);
+  Serial.print("\tLR: ");
+  Serial.print(leftRightValue);
+  Serial.print("\tturn?: ");
+  Serial.print(turnInPlace);
+
   double leftSpeed = 0.0;
   double rightSpeed = 0.0;
 
@@ -88,6 +98,11 @@ void CurvatureDrive::drive() const {
     leftSpeed /= maxMagnitude;
     rightSpeed /= maxMagnitude;
   }
+
+  Serial.print("\tleftSpeed: ");
+  Serial.print(leftSpeed);
+  Serial.print("\trightSpeed: ");
+  Serial.println(rightSpeed);
 
   leftMotor.drive(leftSpeed);
   rightMotor.drive(rightSpeed);
